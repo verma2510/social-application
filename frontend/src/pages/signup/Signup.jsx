@@ -7,6 +7,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
+    password: "", // optional but recommended for login
   });
 
   const handleChange = (e) => {
@@ -14,34 +15,60 @@ const Signup = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Signup Data:", formData);
-    alert("Signup successful!");
+    try {
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Signup failed");
+      }
+
+      alert("Signup successful!");
+      setFormData({ username: "", email: "", password: "" });
+    } catch (err) {
+      console.error(err);
+      alert("Error during signup.");
+    }
   };
 
   return (
     <div className="signup-container">
       <h1>Signup</h1>
       <form onSubmit={handleSubmit} className="form-group">
-          <Textfield
-            label="Username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Enter username"
-            required
-          />
-          <Textfield
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter email"
-            required
-          />
+        <Textfield
+          label="Username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          placeholder="Enter username"
+          required
+        />
+        <Textfield
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Enter email"
+          required
+        />
+        <Textfield
+          label="Password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Enter password"
+          required
+        />
         <Button label="Signup" type="submit" />
       </form>
     </div>
