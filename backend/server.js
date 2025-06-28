@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const http = require("http");         
 const { Server } = require("socket.io");
 const postsRouter = require("./routes/posts");
+const usersRouter = require("./routes/users");
+
 dotenv.config();
 
 const app = express();
@@ -23,6 +25,8 @@ app.use(express.json());
 
 
 app.use("/posts", postsRouter);
+app.use("/users", usersRouter);
+
 
 mongoose
   .connect(process.env.MONGODB_URI, {
