@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../components/button/Button";
 import Textfield from "../../components/textfield/Textfield";
 import "./login.css";
@@ -8,15 +8,20 @@ import { userLogin, adminLogin } from "../../dummyData";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((err) => console.error("Failed to fetch users", err));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "username") {
-      setUsername(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
+    if (name === "username") setUsername(value);
+    else if (name === "password") setPassword(value);
   };
 
   const handleSubmit = (e) => {
@@ -29,11 +34,21 @@ const Login = () => {
 
     if (username === userLogin.username && password === userLogin.password) {
       navigate("/cards");
+      return;
     } else if (
       username === adminLogin.username &&
       password === adminLogin.password
     ) {
       navigate("/admin");
+      return;
+    }
+
+    const matchedUser = users.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (matchedUser) {
+      navigate("/cards");
     } else {
       alert("Invalid credentials");
     }
