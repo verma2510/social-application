@@ -7,7 +7,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password: "", // optional but recommended for login
+    password: "",
   });
 
   const handleChange = (e) => {
