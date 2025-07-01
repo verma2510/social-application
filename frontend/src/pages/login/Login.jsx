@@ -60,7 +60,6 @@ const Login = () => {
       <h1>Login</h1>
       <ToggleButton/>
       <form className="form-container" onSubmit={handleSubmit}>
-        <div className="form-group">
           <Textfield
             label="Username"
             name="username"
@@ -77,7 +76,6 @@ const Login = () => {
             required
             type="password"
           />
-        </div>
         <Button label="Login" type="submit" />
         <Button
           label="Signup"

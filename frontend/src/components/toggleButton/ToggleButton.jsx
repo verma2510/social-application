@@ -9,13 +9,13 @@ const ToggleButton = () => {
   return (
     <div className="toggle-container">
       <button
-        // className={`toggle-button ${active === "login" ? "active" : ""}`}
+        className={`toggle-button ${active === "login" ? "active" : ""}`}
         onClick={() => setActive(navigate("/"))}
       >
         Login
       </button>
       <button
-        // className={`toggle-button ${active === "signup" ? "active" : ""}`}
+        className={`toggle-button ${active === "signup" ? "active" : ""}`}
         onClick={() => setActive(navigate("/signup"))}
       >
         Signup
