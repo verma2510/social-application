@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../../components/button/Button";
 import Textfield from "../../components/textfield/Textfield";
 import "./signup.css";
+import ToggleButton from "../../components/toggleButton/ToggleButton";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -42,6 +43,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <h1>Signup</h1>
+      <ToggleButton/>
       <form onSubmit={handleSubmit} className="form-group">
         <Textfield
           label="Username"

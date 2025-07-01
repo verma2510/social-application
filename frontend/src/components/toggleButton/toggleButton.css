@@ -1,0 +1,24 @@
+/* .toggle-container {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 200px;
+}
+
+.toggle-button {
+  flex: 1;
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  color: #555;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+}
+   */

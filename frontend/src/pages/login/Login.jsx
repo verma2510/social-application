@@ -4,6 +4,7 @@ import Textfield from "../../components/textfield/Textfield";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { userLogin, adminLogin } from "../../dummyData";
+import ToggleButton from "../../components/toggleButton/ToggleButton";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -57,6 +58,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <h1>Login</h1>
+      <ToggleButton/>
       <form className="form-container" onSubmit={handleSubmit}>
         <div className="form-group">
           <Textfield
