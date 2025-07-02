@@ -9,16 +9,13 @@
 }
  
 .toggle-button {
-  /* flex: 1; */
   padding: 10px 20px;
-  /* border: none; */
   background-color: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-/*
+
 .toggle-button.active {
-  background: linear-gradient(to right, #007bff, #0056b3);
-  color: white;
+  background-color: #09ff00;
+  color: black;
 }
-   */
